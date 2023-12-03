@@ -3,9 +3,9 @@ const audioCtx = new AudioContext();
 const oscillatorNode = audioCtx.createOscillator();
 const gainNode = audioCtx.createGain();
 
-gainNode.gain = 1; // volume
-gainNode.channelCount = 2; // stereo
-gainNode.channelInterpretation = "speakers"; // or "discrete"
+gainNode.gain = 1;
+gainNode.channelCount = 2;
+gainNode.channelInterpretation = "speakers";
 
 var Keys = {
   q: 60,
@@ -18,14 +18,22 @@ var Keys = {
   i: 72,
   o: 74,
   p: 76,
-} // chords
+}
 
 document.addEventListener('keydown', function(e) {
   if (Keys.hasOwnProperty(e.key)) {
     if (audioCtx.state === "suspended") {
+      document.getElementById("K" + Keys[e.key]).style.backgroundColor = "red";
+      setTimeout(function(){
+        document.getElementById("K" + Keys[e.key]).style.backgroundColor = "";
+      }, 1000);
       audioCtx.resume()
       Play(Keys[e.key]);
     } else if (audioCtx.state === "running") {
+      document.getElementById("K" + Keys[e.key]).style.backgroundColor = "red";
+      setTimeout(function(){
+        document.getElementById("K" + Keys[e.key]).style.backgroundColor = "";
+      }, 1000);
       Play(Keys[e.key]);
     }
   }
