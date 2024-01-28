@@ -3,9 +3,9 @@ const audioCtx = new AudioContext();
 const oscillatorNode = audioCtx.createOscillator();
 const gainNode = audioCtx.createGain();
 
-gainNode.gain = 1;
-gainNode.channelCount = 2;
-gainNode.channelInterpretation = "speakers";
+gainNode.gain = 1; // volume
+gainNode.channelCount = 2; // stereo
+gainNode.channelInterpretation = "speakers"; // or "discrete"
 
 var Keys = {
   q: 60,
@@ -18,7 +18,23 @@ var Keys = {
   i: 72,
   o: 74,
   p: 76,
-}
+  a: 77,
+  s: 79,
+  d: 81,
+  f: 83,
+  g: 84,
+  h: 86,
+  j: 88,
+  k: 89,
+  l: 91,
+  y: 93,
+  x: 95,
+  c: 96,
+  v: 98,
+  b: 100,
+  n: 101,
+  m: 103,
+} // notes
 
 document.addEventListener('keydown', function(e) {
   if (Keys.hasOwnProperty(e.key)) {
