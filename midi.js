@@ -64,12 +64,13 @@ document.addEventListener('keyup', function(e) {
 navigator.requestMIDIAccess().then((access) => {
   const inputs = access.inputs.values();
   const outputs = access.outputs.values();
-  console.log(inputs + " " + outputs);
 
   inputs.forEach((input) => {
     console.log(input.name);
     input.onmidimessage = (message) => {
       const [command, key, velocity] = message.data;
+
+      gainNode.gain = velocity / 100;
 
       if (command === 144) {
       	audioCtx.resume();
