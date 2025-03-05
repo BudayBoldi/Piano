@@ -1,3 +1,2 @@
 # Piano
-Play the piano using JScript.
-Still beta ...
+Play the piano or keyboard using JScript.
